@@ -12,7 +12,8 @@ class CartScreenController extends GetxController {
       cart.fold(0, (sum, product) => sum + product.quantity.value);
 
   void addToCart(Product product) {
-    final existingProduct = cart.firstWhereOrNull((p) => p.id == product.id);
+    final existingProduct = cart
+        .firstWhereOrNull((p) => p.id == product.id && p.name == product.name);
 
     if (existingProduct == null) {
       cart.add(Product(
@@ -28,13 +29,15 @@ class CartScreenController extends GetxController {
   }
 
   void increaseQuantity(Product product) {
-    final cartProduct = cart.firstWhere((p) => p.id == product.id);
+    final cartProduct =
+        cart.firstWhere((p) => p.id == product.id && p.name == product.name);
     cartProduct.quantity++;
     cart.refresh();
   }
 
   void decreaseQuantity(Product product) {
-    final cartProduct = cart.firstWhere((p) => p.id == product.id);
+    final cartProduct =
+        cart.firstWhere((p) => p.id == product.id && p.name == product.name);
 
     if (cartProduct.quantity > 1) {
       cartProduct.quantity--;

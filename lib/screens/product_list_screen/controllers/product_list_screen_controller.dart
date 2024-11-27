@@ -34,7 +34,7 @@ class ProductListScreenController extends GetxController {
 
     try {
       isLoadingLatestProducts.value = true;
-      print('isInitialLoad $isInitialLoad');
+
       final products = await services.fetchLatestProducts(
           cursor: isInitialLoad ? null : nextCursor);
 

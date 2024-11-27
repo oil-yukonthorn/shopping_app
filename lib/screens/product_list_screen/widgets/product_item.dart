@@ -16,8 +16,8 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      final cartProduct =
-          controller.cart.firstWhereOrNull((e) => e.id == product.id);
+      final cartProduct = controller.cart.firstWhereOrNull(
+          (p) => p.id == product.id && p.name == product.name);
 
       return ListTile(
         leading: Container(
