@@ -15,8 +15,6 @@ class CustomBottomNavBar extends StatelessWidget {
       return BottomNavigationBar(
         currentIndex: homeScreenController.selectedIndex.value,
         onTap: (index) {
-          // navigationController.changeTab(index);
-
           if (index == 1) {
             Get.toNamed('/cart');
           }
