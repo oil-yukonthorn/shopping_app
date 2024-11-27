@@ -9,9 +9,14 @@ import 'package:shopping_app/screens/product_list_screen/binding/product_list_sc
 import 'package:shopping_app/screens/product_list_screen/product_list_screen.dart';
 
 import 'api/services.dart';
+import 'dart:io';
 
 void main() {
-  final apiClient = ApiClient(baseUrl: 'http://localhost:8080');
+  final String baseUrl = Platform.isAndroid
+      ? 'http://10.0.2.2:8080' //  Android emulator
+      : 'http://localhost:8080'; //  iOS simulator
+
+  final apiClient = ApiClient(baseUrl: baseUrl);
   Get.put(Services(apiClient: apiClient));
 
   runApp(GetMaterialApp(
